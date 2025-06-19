@@ -1,6 +1,7 @@
 const icon = {
   fontFamily: {
-    materialSymbols: "'Material Symbols Outlined'",
+    // prettier-ignore
+    materialSymbols: '\'Material Symbols Outlined\'',
   },
 
   iconSize: {
