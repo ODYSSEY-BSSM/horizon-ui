@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import color from './color';
 
-const globalStyle = css`
+const global = css`
   @import url('https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css');
   @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..400,0..1,0');
 
@@ -110,4 +110,4 @@ const globalStyle = css`
   }
 `;
 
-export default globalStyle;
+export default global;
