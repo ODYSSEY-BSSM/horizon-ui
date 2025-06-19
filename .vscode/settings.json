@@ -6,11 +6,13 @@
   },
   "typescript.preferences.includePackageJsonAutoImports": "on",
   "typescript.suggest.autoImports": true,
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
   "emmet.includeLanguages": {
     "typescript": "html",
-    "typescriptreact": "html"
-  }
+    "typescriptreact": "html",
+    "css": "css"
+  },
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "all"
 }

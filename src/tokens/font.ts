@@ -1,6 +1,8 @@
+// prettier-ignore-start
 export const font = {
   fontFamily: {
-    suit: "'SUIT Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    // prettier-ignore
+    suit: '\'SUIT Variable\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif',
   },
 
   fontWeight: {
@@ -32,3 +34,4 @@ export const font = {
 } as const;
 
 export default font;
+// prettier-ignore-end
