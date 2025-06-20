@@ -1,4 +1,7 @@
-name: Release
+name: Manual Release
+
+# 이 워크플로우는 수동으로 태그를 푸시할 때만 실행됩니다.
+# 자동 버전 관리는 auto-version.yml 워크플로우를 사용하세요.
 
 on:
   push:
@@ -44,9 +47,8 @@ jobs:
 
       - name: Create Release
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false

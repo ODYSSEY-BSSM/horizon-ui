@@ -87,12 +87,26 @@ pnpm act:storybook
 
 ## 배포
 
-### 자동 배포 (권장)
+### 자동 버전 관리 (권장)
 
-1. 코드 변경 후 main 브랜치에 머지
-2. 태그 생성: `git tag v1.0.1`
-3. 태그 푸시: `git push origin v1.0.1`
-4. GitHub Actions가 자동으로 npm 배포 및 GitHub Release 생성
+커밋 메시지에 특정 키워드를 포함하면 자동으로 버전이 올라가고 릴리즈됩니다:
+
+```bash
+# 패치 버전 올리기 (1.0.0 → 1.0.1)
+git commit -m "fix: 버그 수정 [patch]"
+
+# 마이너 버전 올리기 (1.0.0 → 1.1.0)
+git commit -m "feat: 새로운 기능 추가 [minor]"
+
+# 메이저 버전 올리기 (1.0.0 → 2.0.0)
+git commit -m "feat: breaking change [major]"
+```
+
+**지원하는 키워드:**
+
+- `[patch]` 또는 `[version:patch]` - 패치 버전
+- `[minor]` 또는 `[version:minor]` - 마이너 버전
+- `[major]` 또는 `[version:major]` - 메이저 버전
 
 ### 수동 배포
 

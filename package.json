@@ -38,6 +38,7 @@
     "release:major": "npm version major && git push && git push --tags",
     "act:ci": "PATH=\"$PATH:./bin\" act push -W .github/workflows/ci.yml",
     "act:release": "PATH=\"$PATH:./bin\" act push -W .github/workflows/release.yml",
+    "act:auto-version": "PATH=\"$PATH:./bin\" act push -W .github/workflows/auto-version.yml",
     "act:storybook": "PATH=\"$PATH:./bin\" act push -W .github/workflows/storybook.yml"
   },
   "keywords": [
