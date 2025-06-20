@@ -39,7 +39,7 @@
     "ui",
     "components"
   ],
-  "author": "your-name",
+  "author": "odyssey-horizon",
   "license": "MIT",
   "peerDependencies": {
     "@emotion/react": ">=11.0.0",
