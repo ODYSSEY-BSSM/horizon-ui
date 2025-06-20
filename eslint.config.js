@@ -1,11 +1,11 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
-import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import importPlugin from 'eslint-plugin-import'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import importPlugin from 'eslint-plugin-import';
 
 export default [
   {
@@ -71,13 +71,9 @@ export default [
         'error',
         {
           groups: [
-            // 1. Node.js 내장 모듈
             ['^node:'],
-            // 2. 외부 라이브러리 (react 우선)
             ['^react', '^@?\\w'],
-            // 3. 내부 절대 경로 (@로 시작)
-            ['^@/'],
-            // 4. 상대 경로
+            ['^@tokens', '^@components', '^@/'],
             [
               '^\\.\\.(?!/?$)',
               '^\\.\\./?',
@@ -85,7 +81,6 @@ export default [
               '^\\.(?!/?$)',
               '^\\./?',
             ],
-            // 5. 타입 imports
             ['^.+\\u0000'],
           ],
         },
@@ -114,5 +109,13 @@ export default [
       'no-debugger': 'error',
       'no-alert': 'error',
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+    },
   },
-]
+];
