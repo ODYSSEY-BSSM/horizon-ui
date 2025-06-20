@@ -64,6 +64,27 @@ pnpm storybook
 pnpm build-storybook
 ```
 
+### GitHub Actions 로컬 테스트 (act)
+
+```bash
+# act 설치 (Docker 필요)
+
+# macOS (Homebrew 권장)
+brew install act
+
+# Linux
+curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
+
+# CI 워크플로우 테스트
+pnpm act:ci
+
+# Release 워크플로우 테스트
+pnpm act:release
+
+# Storybook 워크플로우 테스트
+pnpm act:storybook
+```
+
 ## 배포
 
 ### 자동 배포 (권장)
