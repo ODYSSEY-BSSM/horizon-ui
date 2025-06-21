@@ -7,7 +7,28 @@ on:
     branches: [main, develop]
 
 jobs:
+  check-hotfix:
+    runs-on: ubuntu-latest
+    outputs:
+      is_hotfix: ${{ steps.check.outputs.is_hotfix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check if hotfix
+        id: check
+        run: |
+          if git log -1 --pretty=%B | grep -q "^hotfix:"; then
+            echo "is_hotfix=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_hotfix=false" >> "$GITHUB_OUTPUT"
+          fi
+
   test:
+    needs: check-hotfix
+    if: needs.check-hotfix.outputs.is_hotfix != 'true'
     runs-on: ubuntu-latest
 
     strategy:
@@ -58,13 +79,16 @@ jobs:
   ci-summary:
     name: CI Summary
     runs-on: ubuntu-latest
-    needs: test
+    needs: [check-hotfix, test]
     if: always()
     steps:
       - name: Report overall status
         run: |
-          if [[ "${{ needs.test.result }}" == "success" ]]; then
-            echo "All CI checks passed successfully."
+          if [[ "${{ needs.check-hotfix.outputs.is_hotfix }}" == "true" ]]; then
+            echo "Hotfix detected - skipping CI checks"
+            exit 0
+          elif [[ "${{ needs.test.result }}" == "success" || "${{ needs.test.result }}" == "skipped" ]]; then
+            echo "All CI checks passed successfully or were skipped."
             exit 0
           else
             echo "Some CI checks failed."
