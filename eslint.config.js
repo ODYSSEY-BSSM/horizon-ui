@@ -9,7 +9,13 @@ import importPlugin from 'eslint-plugin-import';
 
 export default [
   {
-    ignores: ['dist', 'node_modules', 'storybook-static', '*.config.js'],
+    ignores: [
+      'dist',
+      'node_modules',
+      'storybook-static',
+      '*.config.js',
+      'coverage',
+    ],
   },
   {
     files: ['**/*.{ts,tsx}'],
