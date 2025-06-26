@@ -1,10 +1,11 @@
+import path from 'path';
+
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-links',
     '@storybook/addon-interactions',
   ],
@@ -17,9 +18,21 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
+      propFilter: prop =>
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
+  },
+  viteFinal: config => {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+          '@tokens': path.resolve(__dirname, '../src/tokens'),
+        },
+      },
+    };
   },
 };
 

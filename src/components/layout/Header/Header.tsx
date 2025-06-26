@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header = ({ title }: HeaderProps) => {
   return (
     <StyledHeader>
-      <Text variant="T_SB_16">{title}</Text>
+      <Text variant='T_SB_16'>{title}</Text>
     </StyledHeader>
   );
 };
