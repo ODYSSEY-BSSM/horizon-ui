@@ -33,9 +33,9 @@ const Button = ({
       style={style}
       {...props}
     >
-      {leftIcon && <Icon name={leftIcon} variant="Stroke_R_28" />}
+      {leftIcon && <Icon name={leftIcon} variant='Stroke_R_28' />}
       {text && <Text variant={textVariant[size]}>{text}</Text>}
-      {rightIcon && <Icon name={rightIcon} variant="Stroke_R_28" />}
+      {rightIcon && <Icon name={rightIcon} variant='Stroke_R_28' />}
     </StyledButton>
   );
 };
