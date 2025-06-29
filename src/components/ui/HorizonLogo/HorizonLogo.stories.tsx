@@ -1,4 +1,4 @@
-import HorizonLogo from './HorizonLogo';
+import HorizonLogo from './HorizonLogo.tsx';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
