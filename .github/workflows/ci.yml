@@ -43,6 +43,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 10.12.4
+          run_install: false
 
       - name: Get pnpm store directory
         shell: bash
@@ -64,7 +65,9 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install --prefer-offline
+        run: |
+          pnpm config set store-dir ${{ env.STORE_PATH }}
+          pnpm install --frozen-lockfile --prefer-offline
 
       - name: Type check
         run: pnpm type-check
