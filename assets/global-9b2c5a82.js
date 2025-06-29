@@ -127,4 +127,4 @@ import{r as C}from"./index-8b3efc3f.js";import{u as De,_ as or}from"./emotion-us
     background-color: ${D.primary[200]};
     color: ${D.primary[900]};
   }
-`;export{ut as c,St as j,Le as n};
+`;export{ut as c,St as j,Le as s};
