@@ -111,7 +111,7 @@ export default [
       'react-hooks/rules-of-hooks': 'error',
 
       // 기타 금지 규칙
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-debugger': 'error',
       'no-alert': 'error',
     },
