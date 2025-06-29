@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "UI components for Odyssey Horizon project",
   "type": "module",
+  "packageManager": "pnpm@10.12.4",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
