@@ -13,10 +13,14 @@ const HorizonLogo = ({
   width = 'auto',
   height = 'auto',
 }: HorizonLogoProps) => {
-  if (process.env.NODE_ENV === 'development' && symbolOnly && textOnly) {
-    console.warn(
-      'HorizonLogo: symbolOnly와 textOnly는 동시에 true일 수 없습니다.',
-    );
+  if (symbolOnly && textOnly) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(
+        'HorizonLogo: symbolOnly와 textOnly는 동시에 true일 수 없습니다. 기본 로고를 렌더링합니다.',
+      );
+    }
+    symbolOnly = false;
+    textOnly = false;
   }
 
   const getViewBox = () => {
