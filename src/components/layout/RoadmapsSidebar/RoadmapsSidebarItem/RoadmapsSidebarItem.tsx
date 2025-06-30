@@ -27,16 +27,16 @@ const RoadmapsSidebarItem = ({
 
   return (
     <StyledRoadmapsSidebarItem selected={selected} to={to}>
-      <Row height='100%'>
-        {verticalLines}
-      </Row>
+      <Row height='100%'>{verticalLines}</Row>
       <Row gap='4px' alignItems='center'>
         <Icon
           name={icon}
           variant='Stroke_L_24'
           color={selected ? color.black : color.grayscale['500']}
         />
-        <Text variant='B_M_14' ellipsis>{itemName}</Text>
+        <Text variant='B_M_14' ellipsis>
+          {itemName}
+        </Text>
       </Row>
     </StyledRoadmapsSidebarItem>
   );
@@ -59,7 +59,7 @@ const StyledRoadmapsSidebarItem = styled.div<StyledRoadmapsSidebarItemProps>`
   color: ${({ selected }) => (selected ? color.black : color.grayscale['500'])};
   background-color: ${({ selected }) =>
     selected ? color.primary['100'] : color.white};
-  
+
   &:hover {
     background-color: ${({ selected }) =>
       selected ? color.primary['100'] : color.grayscale['100']};

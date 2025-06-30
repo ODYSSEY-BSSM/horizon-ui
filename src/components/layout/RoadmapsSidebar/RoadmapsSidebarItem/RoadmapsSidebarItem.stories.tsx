@@ -9,7 +9,8 @@ const meta: Meta<typeof RoadmapsSidebarItem> = {
     layout: 'padded',
     docs: {
       description: {
-        component: '로드맵 사이드바 아이템 컴포넌트입니다. 계층 구조를 시각적으로 표현하며, 선택/비선택 상태를 지원합니다.',
+        component:
+          '로드맵 사이드바 아이템 컴포넌트입니다. 계층 구조를 시각적으로 표현하며, 선택/비선택 상태를 지원합니다.',
       },
     },
   },
@@ -130,7 +131,8 @@ export const Level5: Story = {
 // 긴 텍스트
 export const LongText: Story = {
   args: {
-    itemName: '매우 긴 텍스트가 들어갔을 때의 동작을 확인하기 위한 스토리입니다',
+    itemName:
+      '매우 긴 텍스트가 들어갔을 때의 동작을 확인하기 위한 스토리입니다',
     icon: 'folder',
     to: '/long-text',
     level: 2,
@@ -141,11 +143,27 @@ export const LongText: Story = {
 export const DifferentIcons: Story = {
   render: () => (
     <div style={{ width: '300px' }}>
-      <RoadmapsSidebarItem icon="home" to="/home" itemName="홈" />
-      <RoadmapsSidebarItem icon="folder" to="/folder" level={2} itemName="폴더" />
-      <RoadmapsSidebarItem icon="file" to="/file" level={3} itemName="파일" />
-      <RoadmapsSidebarItem icon="code" to="/code" level={3} itemName="코드" selected />
-      <RoadmapsSidebarItem icon="settings" to="/settings" level={2} itemName="설정" />
+      <RoadmapsSidebarItem icon='home' to='/home' itemName='홈' />
+      <RoadmapsSidebarItem
+        icon='folder'
+        to='/folder'
+        level={2}
+        itemName='폴더'
+      />
+      <RoadmapsSidebarItem icon='file' to='/file' level={3} itemName='파일' />
+      <RoadmapsSidebarItem
+        icon='code'
+        to='/code'
+        level={3}
+        itemName='코드'
+        selected
+      />
+      <RoadmapsSidebarItem
+        icon='settings'
+        to='/settings'
+        level={2}
+        itemName='설정'
+      />
     </div>
   ),
   parameters: {
@@ -160,16 +178,68 @@ export const DifferentIcons: Story = {
 // 계층 구조 예시
 export const HierarchyExample: Story = {
   render: () => (
-    <div style={{ width: '350px', border: '1px solid #e0e0e0', borderRadius: '8px' }}>
-      <RoadmapsSidebarItem icon="folder_open" to="/frontend" selected level={1} itemName="프론트엔드 개발" />
-      <RoadmapsSidebarItem icon="folder" to="/frontend/basic" level={2} itemName="프론트엔드 개발" />
-      <RoadmapsSidebarItem icon="graph_1" to="/frontend/basic/html" level={3} itemName='HTML' />
-      <RoadmapsSidebarItem icon="graph_1" to="/frontend/basic/css" level={3} itemName='CSS' />
-      <RoadmapsSidebarItem icon="graph_1" to="/frontend/basic/js" level={3} itemName='JavaScript' />
-      <RoadmapsSidebarItem icon="folder" to="/frontend/framework" level={2} itemName='프레임워크' />
-      <RoadmapsSidebarItem icon="graph_1" to="/frontend/framework/react" level={3} itemName='React' />
-      <RoadmapsSidebarItem icon="file" to="/frontend/framework/vue" level={3} itemName='Vue.js' />
-      <RoadmapsSidebarItem icon="file" to="/frontend/framework/angular" level={3} itemName='Angular' />
+    <div
+      style={{
+        width: '350px',
+        border: '1px solid #e0e0e0',
+        borderRadius: '8px',
+      }}
+    >
+      <RoadmapsSidebarItem
+        icon='folder_open'
+        to='/frontend'
+        selected
+        level={1}
+        itemName='프론트엔드 개발'
+      />
+      <RoadmapsSidebarItem
+        icon='folder'
+        to='/frontend/basic'
+        level={2}
+        itemName='프론트엔드 개발'
+      />
+      <RoadmapsSidebarItem
+        icon='graph_1'
+        to='/frontend/basic/html'
+        level={3}
+        itemName='HTML'
+      />
+      <RoadmapsSidebarItem
+        icon='graph_1'
+        to='/frontend/basic/css'
+        level={3}
+        itemName='CSS'
+      />
+      <RoadmapsSidebarItem
+        icon='graph_1'
+        to='/frontend/basic/js'
+        level={3}
+        itemName='JavaScript'
+      />
+      <RoadmapsSidebarItem
+        icon='folder'
+        to='/frontend/framework'
+        level={2}
+        itemName='프레임워크'
+      />
+      <RoadmapsSidebarItem
+        icon='graph_1'
+        to='/frontend/framework/react'
+        level={3}
+        itemName='React'
+      />
+      <RoadmapsSidebarItem
+        icon='file'
+        to='/frontend/framework/vue'
+        level={3}
+        itemName='Vue.js'
+      />
+      <RoadmapsSidebarItem
+        icon='file'
+        to='/frontend/framework/angular'
+        level={3}
+        itemName='Angular'
+      />
     </div>
   ),
   parameters: {
@@ -186,16 +256,35 @@ export const StateComparison: Story = {
   render: () => (
     <div style={{ width: '300px' }}>
       <div style={{ marginBottom: '16px' }}>
-        <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>비선택 상태</h4>
-        <RoadmapsSidebarItem icon="folder" to="/inactive" itemName='비선택 아이템' />
+        <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>
+          비선택 상태
+        </h4>
+        <RoadmapsSidebarItem
+          icon='folder'
+          to='/inactive'
+          itemName='비선택 아이템'
+        />
       </div>
       <div style={{ marginBottom: '16px' }}>
-        <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>선택 상태</h4>
-        <RoadmapsSidebarItem icon="folder_open" to="/active" selected itemName='선택된 아이템' />
+        <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>
+          선택 상태
+        </h4>
+        <RoadmapsSidebarItem
+          icon='folder_open'
+          to='/active'
+          selected
+          itemName='선택된 아이템'
+        />
       </div>
       <div>
-        <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>아이콘 없음</h4>
-        <RoadmapsSidebarItem icon="" to="/no-icon" itemName='아이콘 없는 아이템' />
+        <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>
+          아이콘 없음
+        </h4>
+        <RoadmapsSidebarItem
+          icon=''
+          to='/no-icon'
+          itemName='아이콘 없는 아이템'
+        />
       </div>
     </div>
   ),
@@ -212,13 +301,36 @@ export const StateComparison: Story = {
 export const ResponsiveTest: Story = {
   render: () => (
     <div>
-      <div style={{ width: '200px', marginBottom: '20px', border: '1px solid #ddd', padding: '10px' }}>
-        <h4 style={{ margin: '0 0 10px 0', fontSize: '12px' }}>좁은 너비 (200px)</h4>
-        <RoadmapsSidebarItem icon="folder" to="/narrow" level={3} itemName='좁은 공간에서의 표시' />
+      <div
+        style={{
+          width: '200px',
+          marginBottom: '20px',
+          border: '1px solid #ddd',
+          padding: '10px',
+        }}
+      >
+        <h4 style={{ margin: '0 0 10px 0', fontSize: '12px' }}>
+          좁은 너비 (200px)
+        </h4>
+        <RoadmapsSidebarItem
+          icon='folder'
+          to='/narrow'
+          level={3}
+          itemName='좁은 공간에서의 표시'
+        />
       </div>
-      <div style={{ width: '400px', border: '1px solid #ddd', padding: '10px' }}>
-        <h4 style={{ margin: '0 0 10px 0', fontSize: '12px' }}>넓은 너비 (400px)</h4>
-        <RoadmapsSidebarItem icon="folder" to="/wide" level={3} itemName='넓은 공간에서의 표시' />
+      <div
+        style={{ width: '400px', border: '1px solid #ddd', padding: '10px' }}
+      >
+        <h4 style={{ margin: '0 0 10px 0', fontSize: '12px' }}>
+          넓은 너비 (400px)
+        </h4>
+        <RoadmapsSidebarItem
+          icon='folder'
+          to='/wide'
+          level={3}
+          itemName='넓은 공간에서의 표시'
+        />
       </div>
     </div>
   ),
@@ -234,7 +346,14 @@ export const ResponsiveTest: Story = {
 // 성능 테스트 (많은 아이템)
 export const PerformanceTest: Story = {
   render: () => (
-    <div style={{ width: '300px', height: '400px', overflow: 'auto', border: '1px solid #ddd' }}>
+    <div
+      style={{
+        width: '300px',
+        height: '400px',
+        overflow: 'auto',
+        border: '1px solid #ddd',
+      }}
+    >
       {Array.from({ length: 50 }, (_, index) => (
         <RoadmapsSidebarItem
           key={index}
@@ -264,9 +383,24 @@ export const HoverTest: Story = {
         <p style={{ fontSize: '12px', color: '#666', margin: '0 0 8px 0' }}>
           각 아이템에 마우스를 올려보세요
         </p>
-        <RoadmapsSidebarItem icon="folder" to="/hover1" itemName="호버 테스트 1" />
-        <RoadmapsSidebarItem icon="file" to="/hover2" level={2} itemName="호버 테스트 2" />
-        <RoadmapsSidebarItem icon="code" to="/hover3" level={3} itemName="호버 테스트 3" selected />
+        <RoadmapsSidebarItem
+          icon='folder'
+          to='/hover1'
+          itemName='호버 테스트 1'
+        />
+        <RoadmapsSidebarItem
+          icon='file'
+          to='/hover2'
+          level={2}
+          itemName='호버 테스트 2'
+        />
+        <RoadmapsSidebarItem
+          icon='code'
+          to='/hover3'
+          level={3}
+          itemName='호버 테스트 3'
+          selected
+        />
       </div>
     </div>
   ),
