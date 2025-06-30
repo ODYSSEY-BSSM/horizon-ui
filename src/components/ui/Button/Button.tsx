@@ -21,16 +21,21 @@ const Button = ({
   text,
   leftIcon,
   rightIcon,
+  onClick,
   style,
   ...props
 }: ButtonProps) => {
+  const iconOnly = !text;
+
   return (
     <StyledButton
       size={size}
       buttonType={type}
       round={round}
-      iconOnly={text?.length === 0}
+      iconOnly={iconOnly}
+      onClick={onClick}
       style={style}
+      data-icon-only={iconOnly}
       {...props}
     >
       {leftIcon && <Icon name={leftIcon} variant='Stroke_R_28' />}

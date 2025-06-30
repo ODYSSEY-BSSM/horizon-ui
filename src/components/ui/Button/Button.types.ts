@@ -11,6 +11,7 @@ export interface ButtonProps {
   leftIcon?: string;
   rightIcon?: string;
   round?: boolean;
+  onClick?: () => void;
   style?: React.CSSProperties;
   props?: React.HTMLProps<HTMLButtonElement>;
 }
