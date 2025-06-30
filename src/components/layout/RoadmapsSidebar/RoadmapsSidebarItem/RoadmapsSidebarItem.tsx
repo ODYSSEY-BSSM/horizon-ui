@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import styled from '@emotion/styled';
 
 import { color } from '@tokens';
@@ -12,7 +12,7 @@ interface RoadmapsSidebarItemProps {
   level?: number;
 }
 
-const RoadmapsSidebarItem = ({
+const RoadmapsSidebarItem = memo(({
   itemName,
   icon,
   to,
@@ -40,7 +40,7 @@ const RoadmapsSidebarItem = ({
       </Row>
     </StyledRoadmapsSidebarItem>
   );
-};
+});
 
 export default RoadmapsSidebarItem;
 
