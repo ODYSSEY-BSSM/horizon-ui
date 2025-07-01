@@ -12,35 +12,37 @@ interface RoadmapsSidebarItemProps {
   level?: number;
 }
 
-const RoadmapsSidebarItem = memo(({
-  itemName,
-  icon,
-  to,
-  selected = false,
-  level = 1,
-}: RoadmapsSidebarItemProps) => {
-  const verticalLines = useMemo(() => {
-    return Array.from({ length: level - 1 }, (_, index) => (
-      <VerticalLine key={index} />
-    ));
-  }, [level]);
+const RoadmapsSidebarItem = memo(
+  ({
+    itemName,
+    icon,
+    to,
+    selected = false,
+    level = 1,
+  }: RoadmapsSidebarItemProps) => {
+    const verticalLines = useMemo(() => {
+      return Array.from({ length: level - 1 }, (_, index) => (
+        <VerticalLine key={index} />
+      ));
+    }, [level]);
 
-  return (
-    <StyledRoadmapsSidebarItem selected={selected} to={to}>
-      <Row height='100%'>{verticalLines}</Row>
-      <Row gap='4px' alignItems='center'>
-        <Icon
-          name={icon}
-          variant='Stroke_L_24'
-          color={selected ? color.black : color.grayscale['500']}
-        />
-        <Text variant='B_M_14' ellipsis>
-          {itemName}
-        </Text>
-      </Row>
-    </StyledRoadmapsSidebarItem>
-  );
-});
+    return (
+      <StyledRoadmapsSidebarItem selected={selected} to={to}>
+        <Row height='100%'>{verticalLines}</Row>
+        <Row gap='4px' alignItems='center'>
+          <Icon
+            name={icon}
+            variant='Stroke_L_24'
+            color={selected ? color.black : color.grayscale['500']}
+          />
+          <Text variant='B_M_14' ellipsis>
+            {itemName}
+          </Text>
+        </Row>
+      </StyledRoadmapsSidebarItem>
+    );
+  },
+);
 
 export default RoadmapsSidebarItem;
 
