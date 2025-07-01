@@ -21,6 +21,8 @@ const RoadmapsSidebarItem = memo(
     level = 1,
   }: RoadmapsSidebarItemProps) => {
     const verticalLines = useMemo(() => {
+      if (level <= 1) return null;
+
       return Array.from({ length: level - 1 }, (_, index) => (
         <VerticalLine key={index} />
       ));
