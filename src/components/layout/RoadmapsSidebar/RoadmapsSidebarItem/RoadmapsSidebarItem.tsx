@@ -7,9 +7,10 @@ import { Icon, Row, Text } from '@components';
 interface RoadmapsSidebarItemProps {
   itemName: string;
   icon: string;
-  to: string;
+  to?: string;
   selected?: boolean;
   level?: number;
+  onClick?: () => void;
 }
 
 const RoadmapsSidebarItem = memo(
@@ -19,6 +20,7 @@ const RoadmapsSidebarItem = memo(
     to,
     selected = false,
     level = 1,
+    onClick,
   }: RoadmapsSidebarItemProps) => {
     const verticalLines = useMemo(() => {
       if (level <= 1) return null;
@@ -29,7 +31,7 @@ const RoadmapsSidebarItem = memo(
     }, [level]);
 
     return (
-      <StyledRoadmapsSidebarItem selected={selected} to={to}>
+      <StyledRoadmapsSidebarItem selected={selected} to={to} onClick={onClick}>
         <Row height='100%'>{verticalLines}</Row>
         <Row gap='4px' alignItems='center'>
           <Icon
@@ -50,7 +52,7 @@ export default RoadmapsSidebarItem;
 
 interface StyledRoadmapsSidebarItemProps {
   selected: boolean;
-  to: string;
+  to?: string;
 }
 
 const StyledRoadmapsSidebarItem = styled.div<StyledRoadmapsSidebarItemProps>`
