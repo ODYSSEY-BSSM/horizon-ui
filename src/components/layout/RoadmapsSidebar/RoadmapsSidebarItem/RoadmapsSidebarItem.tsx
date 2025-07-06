@@ -33,13 +33,18 @@ const RoadmapsSidebarItem = memo(
     return (
       <StyledRoadmapsSidebarItem selected={selected} to={to} onClick={onClick}>
         <Row height='100%'>{verticalLines}</Row>
-        <Row gap='4px' alignItems='center'>
+        <Row gap='4px' alignItems='center' style={{ minWidth: 0 }}>
           <Icon
             name={icon}
             variant='Stroke_L_24'
             color={selected ? color.black : color.grayscale['500']}
           />
-          <Text variant='B_M_14' ellipsis>
+          <Text
+            variant='B_M_14'
+            style={{
+            }}
+            ellipsis
+          >
             {itemName}
           </Text>
         </Row>
@@ -62,6 +67,7 @@ const StyledRoadmapsSidebarItem = styled.div<StyledRoadmapsSidebarItemProps>`
   align-items: center;
   gap: 20px;
   cursor: pointer;
+  overflow-x: clip;
   color: ${({ selected }) => (selected ? color.black : color.grayscale['500'])};
   background-color: ${({ selected }) =>
     selected ? color.primary['100'] : color.white};

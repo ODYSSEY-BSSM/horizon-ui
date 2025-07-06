@@ -66,7 +66,12 @@ const RoadmapsSidebar = () => {
         <Text variant='B_M_12' color={color.grayscale['400']}>
           내 로드맵
         </Text>
-        <Icon name='add' variant='Stroke_L_24' color={color.grayscale['400']} />
+        <Icon
+          name='add'
+          variant='Stroke_L_24'
+          color={color.grayscale['400']}
+          style={{ cursor: 'pointer' }}
+        />
       </Row>
       <StyledRoadmapsSidebarItemWrapper>
         <Column width='100%'>
@@ -86,11 +91,12 @@ const RoadmapsSidebar = () => {
 export default RoadmapsSidebar;
 
 const StyledRoadmapsSidebar = styled.div`
-  flex: 1;
+  flex: 1 0 0;
   display: flex;
   flex-direction: column;
   height: 100%;
   background-color: ${color.white};
+  min-width: 0;
 `;
 
 const StyledRoadmapsSidebarItemWrapper = styled.div`
