@@ -9,10 +9,21 @@ const Column = ({
   height,
   padding,
   alignItems,
-  ...props
+  justifyContent,
+  style,
 }: FlexProps) => {
   return (
-    <StyledColumn style={{ gap, width, height, padding, alignItems, ...props }}>
+    <StyledColumn
+      style={{
+        gap,
+        width,
+        height,
+        padding,
+        alignItems,
+        justifyContent,
+        ...style,
+      }}
+    >
       {children}
     </StyledColumn>
   );

@@ -13,14 +13,14 @@ const Icon = ({
   variant,
   'aria-label': ariaLabel,
   'aria-hidden': ariaHidden,
-  ...props
+  style,
 }: IconProps) => (
   <StyledIcon
     variant={variant}
     role={ariaLabel ? 'img' : undefined}
     aria-label={ariaLabel}
     aria-hidden={ariaHidden ?? (!ariaLabel ? true : undefined)}
-    {...props}
+    style={{ ...style }}
   >
     {name}
   </StyledIcon>

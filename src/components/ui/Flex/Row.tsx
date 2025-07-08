@@ -10,7 +10,7 @@ const Row = ({
   padding,
   alignItems,
   justifyContent,
-  ...props
+  style,
 }: FlexProps) => {
   return (
     <StyledRow
@@ -21,7 +21,7 @@ const Row = ({
         padding,
         alignItems,
         justifyContent,
-        ...props.props,
+        ...style,
       }}
     >
       {children}
