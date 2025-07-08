@@ -34,6 +34,11 @@ const config: StorybookConfig = {
           '@components': path.resolve(__dirname, '../src/components'),
         },
       },
+      define: {
+        ...config.define,
+        'process.env': {},
+        global: 'globalThis',
+      },
     };
   },
 };
