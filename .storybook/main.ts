@@ -37,7 +37,6 @@ const config: StorybookConfig = {
       define: {
         ...config.define,
         'process.env': {},
-        global: 'globalThis',
       },
     };
   },
