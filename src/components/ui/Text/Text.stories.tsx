@@ -121,3 +121,19 @@ export const WithCustomTag: Story = {
     children: 'h1 태그로 렌더링된 제목',
   },
 };
+
+export const Test: Story = {
+  decorators: [
+    Story => (
+      <div style={{ width: '10px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    variant: 'P_R_16',
+    children: '본문 텍스트',
+    width: '50px',
+    ellipsis: true,
+  },
+};
