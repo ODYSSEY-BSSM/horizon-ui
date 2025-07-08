@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 import styled from '@emotion/styled';
 
 import { color } from '@tokens';
-import { Icon, Row, Text } from '@components';
+import { Icon, Row, Text, UniversalLink } from '@components';
 
 interface RoadmapsSidebarItemProps {
   itemName: string;
@@ -11,6 +11,7 @@ interface RoadmapsSidebarItemProps {
   selected?: boolean;
   level?: number;
   onClick?: () => void;
+  onDoubleClick?: () => void;
 }
 
 const RoadmapsSidebarItem = memo(
@@ -21,6 +22,7 @@ const RoadmapsSidebarItem = memo(
     selected = false,
     level = 1,
     onClick,
+    onDoubleClick,
   }: RoadmapsSidebarItemProps) => {
     const verticalLines = useMemo(() => {
       if (level <= 1) return null;
@@ -31,24 +33,26 @@ const RoadmapsSidebarItem = memo(
     }, [level]);
 
     return (
-      <StyledRoadmapsSidebarItem selected={selected} to={to} onClick={onClick}>
-        <Row height='100%'>{verticalLines}</Row>
-        <Row gap='4px' alignItems='center' style={{ minWidth: 0 }}>
-          <Icon
-            name={icon}
-            variant='Stroke_L_24'
-            color={selected ? color.black : color.grayscale['500']}
-          />
-          <Text
-            variant='B_M_14'
-            style={{
-            }}
-            ellipsis
-          >
-            {itemName}
-          </Text>
-        </Row>
-      </StyledRoadmapsSidebarItem>
+      <UniversalLink href={to}>
+        <StyledRoadmapsSidebarItem
+          selected={selected}
+          to={to}
+          onClick={onClick}
+          onDoubleClick={onDoubleClick}
+        >
+          <Row height='100%'>{verticalLines}</Row>
+          <Row gap='4px' alignItems='center' style={{ minWidth: 0 }}>
+            <Icon
+              name={icon}
+              variant='Stroke_L_24'
+              color={selected ? color.black : color.grayscale['500']}
+            />
+            <Text variant='B_M_14' ellipsis>
+              {itemName}
+            </Text>
+          </Row>
+        </StyledRoadmapsSidebarItem>
+      </UniversalLink>
     );
   },
 );

@@ -3,17 +3,24 @@ import styled from '@emotion/styled';
 
 import { color } from '@tokens';
 import { Column, Icon, Row, Text } from '@components';
-import { GetDirectoryRes } from '@/types/directory/remote.ts';
+import { Directory, GetDirectoryRes } from '@/types/directory/remote.ts';
 
 import RoadmapsSidebarItem from './RoadmapsSidebarItem/RoadmapsSidebarItem.tsx';
 import { mockData } from './RoadmapsSidebar.mockData.ts';
 
 interface DirectoryItemProps {
-  directory: GetDirectoryRes;
+  directory: Directory;
   level: number;
+  handleItemFocus: (itemId: number) => void;
+  focusedItem: number | null;
 }
 
-const DirectoryItem = ({ directory, level }: DirectoryItemProps) => {
+const DirectoryItem = ({
+  directory,
+  level,
+  handleItemFocus,
+  focusedItem,
+}: DirectoryItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,24 +29,30 @@ const DirectoryItem = ({ directory, level }: DirectoryItemProps) => {
         itemName={directory.name}
         icon={isOpen ? 'folder_open' : 'folder'}
         level={level}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => handleItemFocus(directory.id)}
+        onDoubleClick={() => setIsOpen(!isOpen)}
+        selected={focusedItem === directory.id}
       />
       {isOpen && (
         <>
-          {directory.childDirectories.map((childDirectory, index) => (
+          {directory.directories.map(childDirectory => (
             <DirectoryItem
-              key={`${childDirectory.name}-${index}`}
+              key={`directory-${childDirectory.id}`}
               directory={childDirectory}
               level={level + 1}
+              handleItemFocus={handleItemFocus}
+              focusedItem={focusedItem}
             />
           ))}
           {directory.roadmaps.map(roadmap => (
             <RoadmapsSidebarItem
-              key={roadmap.id}
+              key={`roadmap-${roadmap.id}`}
               itemName={roadmap.title}
               icon='graph_1'
               level={level + 1}
               to={`/roadmaps/${roadmap.id}`}
+              onClick={() => handleItemFocus(roadmap.id)}
+              selected={focusedItem === roadmap.id}
             />
           ))}
         </>
@@ -49,11 +62,16 @@ const DirectoryItem = ({ directory, level }: DirectoryItemProps) => {
 };
 
 const RoadmapsSidebar = () => {
-  const [directories, setDirectories] = useState<GetDirectoryRes[]>([]);
+  const [items, setItems] = useState<GetDirectoryRes | null>(null);
+  const [focusedItem, setFocusedItem] = useState<number | null>(null);
 
   useEffect(() => {
-    setDirectories(mockData);
+    setItems(mockData);
   }, []);
+
+  const handleItemFocus = (itemId: number) => {
+    setFocusedItem(itemId);
+  };
 
   return (
     <StyledRoadmapsSidebar>
@@ -75,11 +93,24 @@ const RoadmapsSidebar = () => {
       </Row>
       <StyledRoadmapsSidebarItemWrapper>
         <Column width='100%'>
-          {directories.map((directory, index) => (
+          {items?.directories.map(directory => (
             <DirectoryItem
-              key={`${directory.name}-${index}`}
+              key={`directory-${directory.id}`}
               directory={directory}
               level={1}
+              handleItemFocus={handleItemFocus}
+              focusedItem={focusedItem}
+            />
+          ))}
+          {items?.roadmaps.map(roadmap => (
+            <RoadmapsSidebarItem
+              key={`roadmap-${roadmap.id}`}
+              itemName={roadmap.title}
+              icon='graph_1'
+              level={1}
+              to={`/roadmaps/${roadmap.id}`}
+              onClick={() => handleItemFocus(roadmap.id)}
+              selected={focusedItem === roadmap.id}
             />
           ))}
         </Column>

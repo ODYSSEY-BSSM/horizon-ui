@@ -1,12 +1,17 @@
-interface Roadmap {
+export interface Roadmap {
   id: number;
   title: string;
 }
 
-export interface GetDirectoryRes {
+export interface Directory {
   id: number;
   name: string;
   parentId: number;
-  childDirectories: GetDirectoryRes[];
+  directories: Directory[];
+  roadmaps: Roadmap[];
+}
+
+export interface GetDirectoryRes {
+  directories: Directory[];
   roadmaps: Roadmap[];
 }
