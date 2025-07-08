@@ -8,5 +8,5 @@ export interface FlexProps {
   padding?: CSSProperties['padding'];
   alignItems?: CSSProperties['alignItems'];
   justifyContent?: CSSProperties['justifyContent'];
-  props?: CSSProperties;
+  style?: CSSProperties;
 }

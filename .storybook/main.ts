@@ -29,8 +29,14 @@ const config: StorybookConfig = {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
+          '@': path.resolve(__dirname, '../src'),
           '@tokens': path.resolve(__dirname, '../src/tokens'),
+          '@components': path.resolve(__dirname, '../src/components'),
         },
+      },
+      define: {
+        ...config.define,
+        'process.env': {},
       },
     };
   },

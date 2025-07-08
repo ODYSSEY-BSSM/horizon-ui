@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 export type IconVariant =
   | 'Stroke_R_32'
@@ -19,4 +19,5 @@ export interface IconProps extends HTMLAttributes<HTMLSpanElement> {
   variant: IconVariant;
   'aria-label'?: string;
   'aria-hidden'?: boolean;
+  style?: React.CSSProperties;
 }

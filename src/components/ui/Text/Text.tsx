@@ -21,7 +21,7 @@ const Text = ({
   textAlign = 'left',
   ellipsis = false,
   whiteSpace = 'nowrap',
-  tag = 'span',
+  tag = 'p',
   ...props
 }: TextProps) => {
   return (
@@ -42,7 +42,7 @@ const Text = ({
 
 export default Text;
 
-const StyledText = styled.span<StyledTextProps>`
+const StyledText = styled.p<StyledTextProps>`
   ${({ variant }) => getTextStyles(variant)}
   ${({ ellipsis }) =>
     ellipsis &&
