@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import NextLink from 'next/link';
 
@@ -7,20 +7,32 @@ export interface UniversalLinkProps {
   children: ReactNode;
 }
 
-const UniversalLink = forwardRef(({ href, children }: UniversalLinkProps) => {
-  if (
-    typeof window === 'undefined' ||
-    'next' in window ||
-    '__NEXT_DATA__' in window
-  ) {
-    return <NextLink href={href || ''}>{children}</NextLink>;
-  }
+const UniversalLink = forwardRef(
+  ({ children, href }: UniversalLinkProps, ref: Ref<HTMLAnchorElement>) => {
+    if (
+      typeof window === 'undefined' ||
+      'next' in window ||
+      '__NEXT_DATA__' in window
+    ) {
+      return (
+        <NextLink href={href || ''} ref={ref}>
+          {children}
+        </NextLink>
+      );
+    }
 
-  if ('ReactRouter' in window) {
-    return <RouterLink to={href || ''}>{children}</RouterLink>;
-  }
+    if ('ReactRouter' in window) {
+      return (
+        <RouterLink to={href || ''} ref={ref}>
+          {children}
+        </RouterLink>
+      );
+    }
 
-  return <a href={href}>{children}</a>;
-});
+    return <a href={href}>{children}</a>;
+  },
+);
+
+UniversalLink.displayName = 'UniversalLink';
 
 export default UniversalLink;
