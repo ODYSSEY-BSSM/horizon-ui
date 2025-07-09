@@ -29,7 +29,7 @@ const UniversalLink = forwardRef(
       );
     }
 
-    return <a href={href}>{children}</a>;
+    return <a href={href} ref={ref}>{children}</a>;
   },
 );
 
