@@ -15,7 +15,7 @@ const Header = ({ title, button }: HeaderProps) => {
   return (
     <StyledHeader>
       <Text variant='T_SB_16'>{title}</Text>
-      {button && <Button type='outlined' size='small' {...button} />}
+      {button && <Button type='outlined' size='small' text={button.text} leftIcon={button.leftIcon} />}
     </StyledHeader>
   );
 };
