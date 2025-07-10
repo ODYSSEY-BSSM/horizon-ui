@@ -128,6 +128,7 @@ const StyledRoadmapsSidebar = styled.div`
   height: 100%;
   background-color: ${color.white};
   min-width: 0;
+  border-right: 1px solid ${color.grayscale['100']};
 `;
 
 const StyledRoadmapsSidebarItemWrapper = styled.div`
