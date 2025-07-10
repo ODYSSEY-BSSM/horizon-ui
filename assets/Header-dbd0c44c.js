@@ -1,4 +1,4 @@
-import{a as N,j as W,F as Ut,b as tn}from"./emotion-element-f0de968e.browser.esm-6b6abe6b.js";import{s as Q}from"./emotion-styled.browser.esm-fb891883.js";import{a as C,c as rn}from"./global-82ed9981.js";import{r as f}from"./index-49dd5b96.js";import"./HorizonLogo-f8ad6e8a.js";import{I as Le}from"./Icon-4ac498c5.js";import{T as De}from"./Text-820f29b2.js";import{a as nn,g as an}from"./_commonjsHelpers-de833af9.js";import{_ as on}from"./iframe-a0cee9f1.js";const ue=f.memo(({itemName:e,icon:t,to:r,selected:i=!1,level:n=1,onClick:a,onDoubleClick:o})=>{const u=f.useMemo(()=>n<=1?null:Array.from({length:n-1},(l,s)=>N(ln,{},s)),[n]);return N(Ci,{href:r,children:W(un,{selected:i,to:r,onClick:a,onDoubleClick:o,children:[N(bt,{height:"100%",children:u}),W(bt,{gap:"4px",alignItems:"center",style:{minWidth:0},children:[N(Le,{name:t,variant:"Stroke_L_24",color:i?C.black:C.grayscale[500]}),N(De,{variant:"B_M_14",ellipsis:!0,children:e})]})]})})}),un=Q.div`
+import{a as N,j as W,F as Ut,b as tn}from"./emotion-element-f0de968e.browser.esm-6b6abe6b.js";import{s as Q}from"./emotion-styled.browser.esm-fb891883.js";import{a as C,c as rn}from"./global-82ed9981.js";import{r as f}from"./index-49dd5b96.js";import"./HorizonLogo-f8ad6e8a.js";import{I as Le}from"./Icon-4ac498c5.js";import{T as De}from"./Text-820f29b2.js";import{a as nn,g as an}from"./_commonjsHelpers-de833af9.js";import{_ as on}from"./iframe-0831033e.js";const ue=f.memo(({itemName:e,icon:t,to:r,selected:i=!1,level:n=1,onClick:a,onDoubleClick:o})=>{const u=f.useMemo(()=>n<=1?null:Array.from({length:n-1},(l,s)=>N(ln,{},s)),[n]);return N(Ci,{href:r,children:W(un,{selected:i,to:r,onClick:a,onDoubleClick:o,children:[N(bt,{height:"100%",children:u}),W(bt,{gap:"4px",alignItems:"center",style:{minWidth:0},children:[N(Le,{name:t,variant:"Stroke_L_24",color:i?C.black:C.grayscale[500]}),N(De,{variant:"B_M_14",ellipsis:!0,children:e})]})]})})}),un=Q.div`
   width: 100%;
   height: 40px;
   display: flex;
@@ -23,6 +23,7 @@ import{a as N,j as W,F as Ut,b as tn}from"./emotion-element-f0de968e.browser.esm
   height: 100%;
   background-color: ${C.white};
   min-width: 0;
+  border-right: 1px solid ${C.grayscale[100]};
 `,dn=Q.div`
   overflow-y: auto;
   overflow-x: hidden;
