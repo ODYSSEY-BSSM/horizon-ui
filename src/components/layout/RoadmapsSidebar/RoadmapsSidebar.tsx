@@ -50,7 +50,7 @@ const DirectoryItem = ({
               itemName={roadmap.title}
               icon='graph_1'
               level={level + 1}
-              to={`/roadmaps/${roadmap.id}`}
+              to={`/roadmaps?id=${roadmap.id}`}
               onClick={() => handleItemFocus(roadmap.id)}
               selected={focusedItem === roadmap.id}
             />
@@ -87,8 +87,7 @@ const RoadmapsSidebar = () => {
         <Icon
           name='add'
           variant='Stroke_L_24'
-          color={color.grayscale['400']}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', color: color.grayscale['400'] }}
         />
       </Row>
       <StyledRoadmapsSidebarItemWrapper>
@@ -108,7 +107,7 @@ const RoadmapsSidebar = () => {
               itemName={roadmap.title}
               icon='graph_1'
               level={1}
-              to={`/roadmaps/${roadmap.id}`}
+              to={`/roadmaps?id=${roadmap.id}`}
               onClick={() => handleItemFocus(roadmap.id)}
               selected={focusedItem === roadmap.id}
             />
