@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 import { color } from '@tokens';
-import { Column, Icon, Row, Text } from '@components';
+import { Column, Row, Text } from '@components';
 import { Directory, GetDirectoryRes } from '@/types/directory/remote.ts';
 
 import RoadmapsSidebarItem from './RoadmapsSidebarItem/RoadmapsSidebarItem.tsx';
@@ -84,11 +84,6 @@ const RoadmapsSidebar = () => {
         <Text variant='B_M_12' color={color.grayscale['400']}>
           내 로드맵
         </Text>
-        <Icon
-          name='add'
-          variant='Stroke_L_24'
-          style={{ cursor: 'pointer', color: color.grayscale['400'] }}
-        />
       </Row>
       <StyledRoadmapsSidebarItemWrapper>
         <Column width='100%'>
