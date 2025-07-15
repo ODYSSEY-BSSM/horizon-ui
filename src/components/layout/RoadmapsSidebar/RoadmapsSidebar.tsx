@@ -15,67 +15,64 @@ interface DirectoryItemProps {
   focusedItem: number | null;
 }
 
-const DirectoryItem = memo(({
-  directory,
-  level,
-  handleItemFocus,
-  focusedItem,
-}: DirectoryItemProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const DirectoryItem = memo(
+  ({ directory, level, handleItemFocus, focusedItem }: DirectoryItemProps) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = useCallback(() => {
-    handleItemFocus(directory.id);
-  }, [handleItemFocus, directory.id]);
+    const handleClick = useCallback(() => {
+      handleItemFocus(directory.id);
+    }, [handleItemFocus, directory.id]);
 
-  const handleDoubleClick = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
+    const handleDoubleClick = useCallback(() => {
+      setIsOpen(!isOpen);
+    }, [isOpen]);
 
-  const childDirectories = useMemo(() => {
-    return directory.directories.map(childDirectory => (
-      <DirectoryItem
-        key={`directory-${childDirectory.id}`}
-        directory={childDirectory}
-        level={level + 1}
-        handleItemFocus={handleItemFocus}
-        focusedItem={focusedItem}
-      />
-    ));
-  }, [directory.directories, level, handleItemFocus, focusedItem]);
+    const childDirectories = useMemo(() => {
+      return directory.directories.map(childDirectory => (
+        <DirectoryItem
+          key={`directory-${childDirectory.id}`}
+          directory={childDirectory}
+          level={level + 1}
+          handleItemFocus={handleItemFocus}
+          focusedItem={focusedItem}
+        />
+      ));
+    }, [directory.directories, level, handleItemFocus, focusedItem]);
 
-  const roadmapItems = useMemo(() => {
-    return directory.roadmaps.map(roadmap => (
-      <RoadmapsSidebarItem
-        key={`roadmap-${roadmap.id}`}
-        itemName={roadmap.title}
-        icon='graph_1'
-        level={level + 1}
-        to={`/roadmaps?id=${roadmap.id}`}
-        onClick={() => handleItemFocus(roadmap.id)}
-        selected={focusedItem === roadmap.id}
-      />
-    ));
-  }, [directory.roadmaps, level, handleItemFocus, focusedItem]);
+    const roadmapItems = useMemo(() => {
+      return directory.roadmaps.map(roadmap => (
+        <RoadmapsSidebarItem
+          key={`roadmap-${roadmap.id}`}
+          itemName={roadmap.title}
+          icon='graph_1'
+          level={level + 1}
+          to={`/roadmaps?id=${roadmap.id}`}
+          onClick={() => handleItemFocus(roadmap.id)}
+          selected={focusedItem === roadmap.id}
+        />
+      ));
+    }, [directory.roadmaps, level, handleItemFocus, focusedItem]);
 
-  return (
-    <>
-      <RoadmapsSidebarItem
-        itemName={directory.name}
-        icon={isOpen ? 'folder_open' : 'folder'}
-        level={level}
-        onClick={handleClick}
-        onDoubleClick={handleDoubleClick}
-        selected={focusedItem === directory.id}
-      />
-      {isOpen && (
-        <>
-          {childDirectories}
-          {roadmapItems}
-        </>
-      )}
-    </>
-  );
-});
+    return (
+      <>
+        <RoadmapsSidebarItem
+          itemName={directory.name}
+          icon={isOpen ? 'folder_open' : 'folder'}
+          level={level}
+          onClick={handleClick}
+          onDoubleClick={handleDoubleClick}
+          selected={focusedItem === directory.id}
+        />
+        {isOpen && (
+          <>
+            {childDirectories}
+            {roadmapItems}
+          </>
+        )}
+      </>
+    );
+  },
+);
 
 const RoadmapsSidebar = () => {
   const [items, setItems] = useState<GetDirectoryRes | null>(null);
@@ -103,28 +100,34 @@ const RoadmapsSidebar = () => {
       </Row>
       <StyledRoadmapsSidebarItemWrapper>
         <Column width='100%'>
-          {useMemo(() =>
-            items?.directories.map(directory => (
-              <DirectoryItem
-                key={`directory-${directory.id}`}
-                directory={directory}
-                level={1}
-                handleItemFocus={handleItemFocus}
-                focusedItem={focusedItem}
-              />
-            )), [items?.directories, handleItemFocus, focusedItem])}
-          {useMemo(() =>
-            items?.roadmaps.map(roadmap => (
-              <RoadmapsSidebarItem
-                key={`roadmap-${roadmap.id}`}
-                itemName={roadmap.title}
-                icon='graph_1'
-                level={1}
-                to={`/roadmaps?id=${roadmap.id}`}
-                onClick={() => handleItemFocus(roadmap.id)}
-                selected={focusedItem === roadmap.id}
-              />
-            )), [items?.roadmaps, handleItemFocus, focusedItem])}
+          {useMemo(
+            () =>
+              items?.directories.map(directory => (
+                <DirectoryItem
+                  key={`directory-${directory.id}`}
+                  directory={directory}
+                  level={1}
+                  handleItemFocus={handleItemFocus}
+                  focusedItem={focusedItem}
+                />
+              )),
+            [items?.directories, handleItemFocus, focusedItem],
+          )}
+          {useMemo(
+            () =>
+              items?.roadmaps.map(roadmap => (
+                <RoadmapsSidebarItem
+                  key={`roadmap-${roadmap.id}`}
+                  itemName={roadmap.title}
+                  icon='graph_1'
+                  level={1}
+                  to={`/roadmaps?id=${roadmap.id}`}
+                  onClick={() => handleItemFocus(roadmap.id)}
+                  selected={focusedItem === roadmap.id}
+                />
+              )),
+            [items?.roadmaps, handleItemFocus, focusedItem],
+          )}
         </Column>
       </StyledRoadmapsSidebarItemWrapper>
     </StyledRoadmapsSidebar>
