@@ -95,21 +95,12 @@ const global = css`
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    display: none;
   }
 
-  ::-webkit-scrollbar-track {
-    background: ${color.grayscale[100]};
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${color.grayscale[400]};
-    border-radius: 4px;
-
-    &:hover {
-      background: ${color.grayscale[500]};
-    }
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   ::selection {
