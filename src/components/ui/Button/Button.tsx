@@ -22,6 +22,7 @@ const Button = ({
   leftIcon,
   rightIcon,
   style,
+  onClick,
   ...props
 }: ButtonProps) => {
   return (
@@ -31,6 +32,7 @@ const Button = ({
       round={round}
       iconOnly={text?.length === 0}
       style={style}
+      onClick={onClick}
       {...props}
     >
       {leftIcon && <Icon name={leftIcon} variant='Stroke_R_28' />}
