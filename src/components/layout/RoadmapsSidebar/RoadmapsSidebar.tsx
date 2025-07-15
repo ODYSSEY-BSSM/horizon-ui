@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 
 import { color } from '@tokens';
@@ -6,7 +6,6 @@ import { Column, Row, Text } from '@components';
 import { Directory, GetDirectoryRes } from '@/types/directory/remote.ts';
 
 import RoadmapsSidebarItem from './RoadmapsSidebarItem/RoadmapsSidebarItem.tsx';
-import { mockData } from './RoadmapsSidebar.mockData.ts';
 
 interface DirectoryItemProps {
   directory: Directory;
@@ -74,13 +73,12 @@ const DirectoryItem = memo(
   },
 );
 
-const RoadmapsSidebar = () => {
-  const [items, setItems] = useState<GetDirectoryRes | null>(null);
-  const [focusedItem, setFocusedItem] = useState<number | null>(null);
+interface RoadmapsSidebarProps {
+  data: GetDirectoryRes;
+}
 
-  useEffect(() => {
-    setItems(mockData);
-  }, []);
+const RoadmapsSidebar = ({ data }: RoadmapsSidebarProps) => {
+  const [focusedItem, setFocusedItem] = useState<number | null>(null);
 
   const handleItemFocus = useCallback((itemId: number) => {
     setFocusedItem(itemId);
@@ -90,7 +88,7 @@ const RoadmapsSidebar = () => {
     <StyledRoadmapsSidebar>
       <Row
         width='100%'
-        padding='6px 6px 6px 20px'
+        padding='24px 20px'
         justifyContent='space-between'
         alignItems='center'
       >
@@ -102,7 +100,7 @@ const RoadmapsSidebar = () => {
         <Column width='100%'>
           {useMemo(
             () =>
-              items?.directories.map(directory => (
+              data.directories.map(directory => (
                 <DirectoryItem
                   key={`directory-${directory.id}`}
                   directory={directory}
@@ -111,11 +109,11 @@ const RoadmapsSidebar = () => {
                   focusedItem={focusedItem}
                 />
               )),
-            [items?.directories, handleItemFocus, focusedItem],
+            [data.directories, handleItemFocus, focusedItem],
           )}
           {useMemo(
             () =>
-              items?.roadmaps.map(roadmap => (
+              data.roadmaps.map(roadmap => (
                 <RoadmapsSidebarItem
                   key={`roadmap-${roadmap.id}`}
                   itemName={roadmap.title}
@@ -126,7 +124,7 @@ const RoadmapsSidebar = () => {
                   selected={focusedItem === roadmap.id}
                 />
               )),
-            [items?.roadmaps, handleItemFocus, focusedItem],
+            [data.roadmaps, handleItemFocus, focusedItem],
           )}
         </Column>
       </StyledRoadmapsSidebarItemWrapper>

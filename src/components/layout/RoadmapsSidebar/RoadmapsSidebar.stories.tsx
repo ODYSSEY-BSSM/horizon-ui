@@ -1,4 +1,5 @@
 import RoadmapsSidebar from './RoadmapsSidebar';
+import { mockData } from './RoadmapsSidebar.mockData';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -22,6 +23,9 @@ type Story = StoryObj<typeof meta>;
 
 // 기본 스토리
 export const Default: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -63,6 +67,9 @@ export const Default: Story = {
 
 // 다양한 높이에서의 테스트
 export const DifferentHeights: Story = {
+  args: {
+    data: mockData,
+  },
   decorators: [
     Story => (
       <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
@@ -124,6 +131,9 @@ export const DifferentHeights: Story = {
 
 // 다양한 너비에서의 테스트
 export const DifferentWidths: Story = {
+  args: {
+    data: mockData,
+  },
   decorators: [
     Story => (
       <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
@@ -189,6 +199,9 @@ export const DifferentWidths: Story = {
 
 // 루트 레벨 - 모든 디렉토리가 닫힌 상태
 export const RootLevel: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -223,6 +236,9 @@ export const RootLevel: Story = {
 
 // 1단계 깊이 - 프론트엔드 개발 디렉토리 열린 상태
 export const FrontendPathExpanded: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -258,6 +274,9 @@ export const FrontendPathExpanded: Story = {
 
 // 2단계 깊이 - React 생태계 디렉토리 열린 상태
 export const ReactEcosystemPath: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -292,6 +311,9 @@ export const ReactEcosystemPath: Story = {
 
 // 3단계 깊이 - DevOps > 클라우드 서비스 > AWS 경로
 export const DeepNestedPath: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -325,6 +347,9 @@ export const DeepNestedPath: Story = {
 
 // 경로 비교 - 여러 경로 동시 표시
 export const PathComparison: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -398,6 +423,9 @@ export const PathComparison: Story = {
 
 // 빈 디렉토리 경로
 export const EmptyDirectoryPath: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -431,6 +459,9 @@ export const EmptyDirectoryPath: Story = {
 
 // 경로 탐색 시뮬레이션
 export const PathNavigationSimulation: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -526,6 +557,9 @@ export const PathNavigationSimulation: Story = {
 
 // 경로 브레드크럼 시뮬레이션
 export const PathBreadcrumbSimulation: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {
@@ -620,6 +654,9 @@ export const PathBreadcrumbSimulation: Story = {
 
 // 경로별 콘텐츠 개수 표시
 export const PathContentCount: Story = {
+  args: {
+    data: mockData,
+  },
   parameters: {
     docs: {
       description: {

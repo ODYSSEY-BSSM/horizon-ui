@@ -8,6 +8,7 @@ interface HeaderProps {
   button?: {
     text?: string;
     leftIcon?: string;
+    onClick?: () => void;
   };
 }
 
@@ -21,6 +22,7 @@ const Header = ({ title, button }: HeaderProps) => {
           size='small'
           text={button.text}
           leftIcon={button.leftIcon}
+          onClick={button.onClick}
         />
       )}
     </StyledHeader>
