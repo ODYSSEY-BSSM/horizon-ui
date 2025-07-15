@@ -88,7 +88,7 @@ const RoadmapsSidebar = ({ data }: RoadmapsSidebarProps) => {
     <StyledRoadmapsSidebar>
       <Row
         width='100%'
-        padding='6px 6px 6px 20px'
+        padding='24px 20px'
         justifyContent='space-between'
         alignItems='center'
       >
